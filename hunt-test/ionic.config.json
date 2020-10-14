@@ -1,0 +1,7 @@
+{
+  "name": "Hunt Test",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}
