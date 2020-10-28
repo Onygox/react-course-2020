@@ -19,7 +19,7 @@ function useFormValidation(initialState, validate, action) {
             }
         }
         //eslint-disable-next-line
-    } [errors]);
+    } , [errors]);
 
     function handleChange (event) {
         setValues(previousValues => ({
@@ -35,8 +35,8 @@ function useFormValidation(initialState, validate, action) {
     }
 
     return {
-        handleSubmit, handleChange, values, setValues, isSubmitting;
-    }
+        handleSubmit, handleChange, values, setValues, isSubmitting
+    };
 }
 
 export default useFormValidation;
