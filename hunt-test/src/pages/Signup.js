@@ -37,7 +37,7 @@ const Signup = (props) => {
     try {
       await firebase.register(name, email, password);
       toast("You have signed up successfully!");
-      props.history.push("/");
+      props.history.push("/login");
     } catch (err) {
       console.error("Authentication Error", err);
       toast(err.message);
