@@ -12,6 +12,8 @@ import EditProfile from './pages/EditProfile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Forgot from './pages/Forgot';
+import useAuth from './hooks/useAuth';
+import userContext from './contexts/userContext';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -33,46 +35,49 @@ import '@ionic/react/css/display.css';
 import './theme/variables.css';
 
 const App = () => {
+  const [user, setUser] = useAuth();
   return (
   <IonApp>
     <IonReactRouter>
-      <IonTabs>
-        <IonRouterOutlet>
-          <Route path="/" render={() => <Redirect to="/home" exact={true} />} />
-          <Route path="/home" component={Home} />
-          <Route path="/trending" component={Trending} />
-          <Route path="/submit" component={Submit} />
-          <Route path="/search" component={Search} />
-          <Route path="/profile" component={Profile} />
-          <Route path="/edit-profile" component={EditProfile} />
-          <Route path="/signup" component={Signup} />
-          <Route path="/login" component={Login} />
-          <Route path="/forgot" component={Forgot} />
-          <Route component= {() => <Redirect to="/home" />} />
-        </IonRouterOutlet>
-        <IonTabBar slot="bottom">
-          <IonTabButton tab="home" href="/home">
-            <IonIcon icon={listCircleOutline} />
-            <IonLabel>Home</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="trending" href="/trending">
-            <IonIcon icon={trendingUpOutline} />
-            <IonLabel>Trending</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="profile" href="/profile">
-            <IonIcon icon={personCircleOutline} />
-            <IonLabel>Profile</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="submit" href="/submit">
-            <IonIcon icon={createOutline} />
-            <IonLabel>Submit</IonLabel>
-          </IonTabButton>
-          <IonTabButton tab="Search" href="/search">
-            <IonIcon icon={searchOutline} />
-            <IonLabel>Search</IonLabel>
-          </IonTabButton>
-        </IonTabBar>
-      </IonTabs>
+      <userContext.Provider value={{ user, setUser }}>
+        <IonTabs>
+          <IonRouterOutlet>
+            <Route path="/" render={() => <Redirect to="/home" exact={true} />} />
+            <Route path="/home" component={Home} />
+            <Route path="/trending" component={Trending} />
+            <Route path="/submit" component={Submit} />
+            <Route path="/search" component={Search} />
+            <Route path="/profile" component={Profile} />
+            <Route path="/edit-profile" component={EditProfile} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+            <Route path="/forgot" component={Forgot} />
+            <Route component= {() => <Redirect to="/home" />} />
+          </IonRouterOutlet>
+          <IonTabBar slot="bottom">
+            <IonTabButton tab="home" href="/home">
+              <IonIcon icon={listCircleOutline} />
+              <IonLabel>Home</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="trending" href="/trending">
+              <IonIcon icon={trendingUpOutline} />
+              <IonLabel>Trending</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="profile" href="/profile">
+              <IonIcon icon={personCircleOutline} />
+              <IonLabel>Profile</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="submit" href="/submit">
+              <IonIcon icon={createOutline} />
+              <IonLabel>Submit</IonLabel>
+            </IonTabButton>
+            <IonTabButton tab="Search" href="/search">
+              <IonIcon icon={searchOutline} />
+              <IonLabel>Search</IonLabel>
+            </IonTabButton>
+          </IonTabBar>
+        </IonTabs>
+      </userContext.Provider>
     </IonReactRouter>
   </IonApp>
   )
