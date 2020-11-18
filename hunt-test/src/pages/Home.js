@@ -1,17 +1,20 @@
 import React from "react";
-import {IonPage, IonContent} from "@ionic/react";
-import LargeHeader from '../components/Header/LargeHeader';
-import SmallHeader from '../components/Header/SmallHeader';
+import { IonContent, IonPage } from "@ionic/react";
+import ProductList from "../components/Product/ProductList";
+import SmallHeader from "../components/Header/SmallHeader";
+import LargeHeader from "../components/Header/LargeHeader";
 
-const Home = () => {
-    return (
-        <IonPage>
-            <SmallHeader title="Home" />
-            <IonContent fullscreen>
-                <LargeHeader title="Home" />
-            </IonContent>
-        </IonPage>
-    );
+const Home = (props) => {
+  return (
+    <IonPage>
+      <SmallHeader title="Hunt" />
+      <IonContent color="medium" fullscreen>
+        <LargeHeader title="Hunt" />
+        <br></br>
+        <ProductList location={props.location} />
+      </IonContent>
+    </IonPage>
+  );
 };
 
 export default Home;

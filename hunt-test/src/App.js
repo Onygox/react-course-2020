@@ -12,6 +12,7 @@ import EditProfile from './pages/EditProfile';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Forgot from './pages/Forgot';
+import Product from './pages/Product';
 import useAuth from './hooks/useAuth';
 import userContext from './contexts/userContext';
 
@@ -52,6 +53,7 @@ const App = () => {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/forgot" component={Forgot} />
+            <Route path="/product/:productID" component={Product} />
             <Route component= {() => <Redirect to="/home" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
